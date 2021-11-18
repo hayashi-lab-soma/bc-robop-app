@@ -1,12 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
+import './App.css'
+import Header from './compornents/Header';
+import {DropzoneArea} from 'material-ui-dropzone'
 
-class App extends Component {
-  render() {
-    return (
-      <div>
-        <h1>BC-ROBOP-APP</h1>
-      </div>
-    )
-  }
+
+function App() {
+  return (
+    <div className="App">
+      <Header/>
+      <DropzoneArea filesLimit={1000}/>
+    </div>
+  );
 }
+
 export default App;
