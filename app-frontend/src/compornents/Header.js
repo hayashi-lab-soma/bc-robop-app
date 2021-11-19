@@ -5,17 +5,17 @@ import React from 'react';
 function Header() {
 	return(
 		<div className="Header">
-		<Box sx={{ flexGrow: 1 }}>
+		<Box >
 			<AppBar position="staic">
 				<Toolbar>
-					<IconButton
+					{/* <IconButton
 						size="large">
 						<MenuIcon />
-					</IconButton>
-					<Typography variant="h5" compornent="div" sx={{flexGrow: 1}}>
+					</IconButton> */}
+					<Typography variant="h6" compornent="div" sx={{flexGrow: 1}}>
 						BC-ROBOP Cloud
 					</Typography>
-					<Button color="inherit">Login</Button>
+					{/* <Button color="inherit">Login</Button> */}
 				</Toolbar>
 			</AppBar>
 		</Box>
