@@ -4,11 +4,10 @@ import Header from './compornents/Header';
 import ImagesUploader from './compornents/ImagesUploader';
 
 function App() {
-
   return (
     <div className="App">
       <Header />
-      <ImagesUploader></ImagesUploader>
+      <ImagesUploader/>
     </div>
   );
 }
