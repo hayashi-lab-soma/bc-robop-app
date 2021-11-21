@@ -2,7 +2,6 @@
 
 # dependencies
 /node_modules
-/app-fronted/node_modules
 /.pnp
 .pnp.js
 
