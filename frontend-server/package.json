@@ -14,6 +14,7 @@
     "@testing-library/jest-dom": "^5.15.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
+    "aws-amplify": "^4.3.8",
     "aws-sdk": "^2.1035.0",
     "date-fns": "^2.26.0",
     "date-time-picker": "^0.5.3",
