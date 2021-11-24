@@ -9,24 +9,26 @@ export const AddImagesDialog = (props) => {
         acceptedFiles={['image/*']}
         filesLimit={1000}
         maxFileSize={5000000}
+        showPreviews={true}
+        showFileNamesInPreview={true}
+        showAlerts={['error']}
 
         open={props.isOpen}
 
         cancelButtonText={'キャンセル'}
         onClose={() => {
-          console.log('Close dialog')
+          // console.log('Close dialog')
           props.handleClose()
         }}
 
         submitButtonText={'画像情報入力'}
         onSave={(files) => {
-          console.log('Files:', files)
+          // console.log('Files:', files)
+          props.handleSetFiles(files)
           props.handleSave()
           props.handleClose()
         }}
 
-        showPreviews={true}
-        showFileNamesInPreview={true}
       >
       </DropzoneDialog>
     </div>

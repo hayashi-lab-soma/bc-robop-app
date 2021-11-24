@@ -31,6 +31,7 @@ export const InputImagesInfoDialog = (props) => {
           <Button onClick={() => {
             console.log("Date: ", props.date)
             props.handleClose()
+            props.handleSubmit()
           }}>送信</Button>
         </DialogActions>
 

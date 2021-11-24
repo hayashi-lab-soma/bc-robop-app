@@ -5,6 +5,7 @@ import { InputImagesInfoDialog } from './InputImagesInfoDialog'
 
 function ImageUploader() {
   const [isOpenAddImagesDialog, setOpenAddImagesDialog] = useState(false)
+  const [files, setImageFiles] = useState(null)
   const [isOpenImageInfoDialog, setOpenImageInfoDialog] = useState(false)
   const [date, setDate] = useState(new Date())
 
@@ -16,11 +17,21 @@ function ImageUploader() {
     setOpenAddImagesDialog(false)
   }
 
+  const handleAddImageFiles = (files) => {
+    setImageFiles(files)
+  }
+
   const handleOpenImageInfoDialog = () => {
     setOpenImageInfoDialog(true)
   }
 
   const handleCloseImageInfoDialog = () => {
+    setOpenImageInfoDialog(false)
+  }
+
+  const handleSubmit = () => {
+    console.log("File: ", files)
+    console.log("Date: ", date)
     setOpenImageInfoDialog(false)
   }
 
@@ -30,6 +41,7 @@ function ImageUploader() {
 
   return (
     <div>
+
       <Box sx={{ m: 2 }}>
         <Button //Add images button
           variant='contained'
@@ -40,16 +52,19 @@ function ImageUploader() {
 
       <AddImagesDialog
         isOpen={isOpenAddImagesDialog}
+        handleSetFiles={handleAddImageFiles}
         handleSave={handleOpenImageInfoDialog}
         handleClose={handleCloseAddImagesDialog}
-      ></AddImagesDialog>
+      />
 
       <InputImagesInfoDialog
         isOpen={isOpenImageInfoDialog}
         handleClose={handleCloseImageInfoDialog}
-        date={date}
-        handleDateChanged={handleDateChanged}>
-      </InputImagesInfoDialog>
+        handleSubmit={handleSubmit}
+        date={Date()}
+        handleDateChanged={handleDateChanged}
+      />
+
     </div>
   )
 }
