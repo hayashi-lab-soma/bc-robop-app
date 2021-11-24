@@ -1,102 +1,70 @@
-import React, { useState, } from 'react'
-import { Button, Dialog, DialogTitle, TextField, DialogActions, DialogContent } from '@mui/material'
-import { DropzoneDialog, } from 'material-ui-dropzone'
-import AdapterDateFns from '@mui/lab/AdapterDateFns'
-import LocalizationProvider from '@mui/lab/LocalizationProvider'
-import DateTimePicker from '@mui/lab/DateTimePicker'
+import React, { useState } from 'react'
+import { Button, Box, } from '@mui/material'
+import { AddImagesDialog } from './AddImagesDialog'
+import { InputImagesInfoDialog } from './InputImagesInfoDialog'
 
 function ImageUploader() {
-  const [isOpen, setOpen] = useState(false)
-  const [isOpen2, setOpen2] = useState(false)
+  const [isOpenAddImagesDialog, setOpenAddImagesDialog] = useState(false)
+  const [files, setImageFiles] = useState(null)
+  const [isOpenImageInfoDialog, setOpenImageInfoDialog] = useState(false)
   const [date, setDate] = useState(new Date())
 
-  const handleClickButton = () => {
-    setOpen(true)
+  const handleAddImagesButtonClicked = () => {
+    setOpenAddImagesDialog(true)
   }
 
-  const handleClose = () => {
-    setOpen(false)
+  const handleCloseAddImagesDialog = () => {
+    setOpenAddImagesDialog(false)
   }
 
-  const handleOpenDialog = () => {
-    setOpen2(true)
+  const handleAddImageFiles = (files) => {
+    setImageFiles(files)
   }
 
-  const handleCloseDialog = () => {
-    setOpen2(false)
+  const handleOpenImageInfoDialog = () => {
+    setOpenImageInfoDialog(true)
   }
 
-  const handleSetDate = (value) => {
+  const handleCloseImageInfoDialog = () => {
+    setOpenImageInfoDialog(false)
+  }
+
+  const handleSubmit = () => {
+    console.log("File: ", files)
+    console.log("Date: ", date)
+    setOpenImageInfoDialog(false)
+  }
+
+  const handleDateChanged = (value) => {
     setDate(value)
   }
 
   return (
     <div>
-      <Button
-        variant='outlined'
-        onClick={handleClickButton}>
-        画像アップロード
-      </Button>
 
-      <DropzoneDialog
-        acceptedFiles={['image/*']}
-        cancelButtonText={'キャンセル'}
-        submitButtonText={'情報入力'}
-        filesLimit={1000}
-        maxFileSize={5000000}
-        open={isOpen}
-        onClose={() => {
-          handleClose()
-        }}
-        onSave={(files) => {
-          console.log('Files:', files)
-          handleClose()
-          handleOpenDialog()
-        }}
-        showPreviews={true}
-        showFileNamesInPreview={true}
-      >
-      </DropzoneDialog>
+      <Box sx={{ m: 2 }}>
+        <Button //Add images button
+          variant='contained'
+          onClick={handleAddImagesButtonClicked}>
+          画像選択
+        </Button>
+      </Box>
 
-      <Dialog
-        open={isOpen2}
-        onClose={handleCloseDialog}
-      // fullWidth={'true'}
-      >
-        <DialogTitle>画像情報入力</DialogTitle>
-        <DialogContent>
+      <AddImagesDialog
+        isOpen={isOpenAddImagesDialog}
+        handleSetFiles={handleAddImageFiles}
+        handleSave={handleOpenImageInfoDialog}
+        handleClose={handleCloseAddImagesDialog}
+      />
 
-          <LocalizationProvider dateAdapter={AdapterDateFns}>
-            <DateTimePicker
-              renderInput={(props) => <TextField {...props} />}
-              label="DateTimePicker"
-              value={date}
-              onChange={(newValue) => {
-                handleSetDate(newValue)
-              }}
-            />
-          </LocalizationProvider>
+      <InputImagesInfoDialog
+        isOpen={isOpenImageInfoDialog}
+        handleClose={handleCloseImageInfoDialog}
+        handleSubmit={handleSubmit}
+        date={Date()}
+        handleDateChanged={handleDateChanged}
+      />
 
-          {/* <TextField
-            id={'Date'}
-            fullWidth={true}
-            margin={'dense'}
-            type={'date'}
-            label={'撮影日時'}
-            variant={'standard'}
-            value={date}
-            onChange={(event) => {
-              console.log("Event:", event.target.value)
-              handleSetDate(event.target.value)
-              console.log("Set date:", date)
-            }}
-          /> */}
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleCloseDialog}>キャンセル</Button>
-          <Button onClick={handleCloseDialog}>アップロード</Button>
-        </DialogActions>
-      </Dialog>
     </div>
   )
 }

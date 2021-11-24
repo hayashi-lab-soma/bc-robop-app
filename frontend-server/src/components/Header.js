@@ -1,18 +1,30 @@
-import { AppBar, Toolbar, Box, Typography } from '@mui/material';
+import { AppBar, Toolbar, Box, Typography, IconButton } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu'
 import React from 'react';
 
 function Header() {
 	return (
 		<div className="Header">
-			<Box >
+			<Box sx={{m: 1}}>
 				<AppBar position="static">
 					<Toolbar>
+
+						<IconButton
+							size="large"
+							edge="start"
+							color="inherit"
+							area-label="menu"
+							sx={{ mr: 2 }}>
+								<MenuIcon />
+						</IconButton>
+
 						<Typography
-							variant="h6"
+							variant="h4"
 							compornent="div"
 							sx={{ flexGrow: 1 }}>
-							BC-ROBOP Cloud
+							Beach Clean Cloud Service
 						</Typography>
+
 					</Toolbar>
 				</AppBar>
 			</Box>
