@@ -8,7 +8,7 @@ function App() {
       <Header/>
       <header className='App-header'>
         <img src={logo} className="App-logo" alt="logo" />
-        <h2>Beach Clean Cloud</h2>
+        <h1>Beach Clean Cloud</h1>
       </header>
     </div>
   );
