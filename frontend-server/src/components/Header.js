@@ -1,11 +1,11 @@
-import { AppBar, Toolbar, Box, Typography, IconButton } from '@mui/material';
+import { AppBar, Toolbar, Box, Typography, IconButton, Button } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu'
 import React from 'react';
 
 function Header() {
 	return (
 		<div className="Header">
-			<Box sx={{m: 1}}>
+			<Box>
 				<AppBar position="static">
 					<Toolbar>
 
@@ -22,8 +22,9 @@ function Header() {
 							variant="h4"
 							compornent="div"
 							sx={{ flexGrow: 1 }}>
-							Beach Clean Cloud Service
 						</Typography>
+
+						<Button color="inherit">Login</Button>
 
 					</Toolbar>
 				</AppBar>
